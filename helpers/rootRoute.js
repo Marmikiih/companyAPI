@@ -32,7 +32,7 @@ const rootRoute = (req, res) => {
 
 rootRouter.get("/", rootRoute);
 
-module.exports = { 
+module.exports = {
   rootRouter,
-  rootRoute
+  rootRoute,
 };
