@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    resetToken:DataTypes.STRING
   });
 
   Company.associate = (models) => {
