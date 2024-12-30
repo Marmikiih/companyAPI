@@ -1,12 +1,11 @@
 const express = require("express");
+const {
+  getCompanies,
+  registerCompany,
+} = require("../controllers/company.controller");
 const router = express.Router();
 
-router.get("/company", (req, res) => {
-    
-  return res.status(200).json({
-    status: true,
-    message: "COMPANY",
-  });
-});
+router.get("/company", getCompanies);
+router.post("/company", registerCompany);
 
 module.exports = router;

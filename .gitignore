@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+
+# Lock files
+package-lock.json
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+
+# IDE settings
+.vscode/
+.idea/
