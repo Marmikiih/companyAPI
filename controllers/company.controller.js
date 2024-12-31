@@ -5,10 +5,31 @@ const sendMail = require("../helpers/sendEmail");
 
 const getCompanies = async (req, res) => {
   try {
+    const { id } = req.params;
+    if (id) {
+      const company = await Company.findOne({ where: { id } });
+      if (!company) {
+        return res.status(404).json({
+          status: false,
+          message: "Company not found",
+        });
+      }
+      return res.status(200).json({
+        status: true,
+        message: "Single Company fetched Successfully",
+        data: company,
+      });
+    }
     const allCompanies = await Company.findAll();
+    if (!allCompanies || allCompanies.length === 0) {
+      return res.status(404).json({
+        status: false,
+        message: "No companies found in the records. Please add a company to get started.",
+      });
+    }
     return res.status(200).json({
       status: true,
-      message: "COMPANIES",
+      message: "Companies fetched Successfully",
       data: allCompanies,
     });
   } catch (err) {

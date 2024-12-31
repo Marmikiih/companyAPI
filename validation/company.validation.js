@@ -1,5 +1,13 @@
 const Joi = require("joi");
 
+const getCompanySchema = Joi.object({
+  id: Joi.number().messages({
+    "number.base": "ID must be a number.",
+    "number.integer": "ID must be an integer.",
+    "number.greater": "ID must be greater than 0."
+  }),
+});
+
 const createCompanySchema = Joi.object({
   name: Joi.string().min(3).max(50).required().messages({
     "string.base": "Name must be a text string.",
@@ -112,6 +120,7 @@ const acceptInvitationSchema = Joi.object({
 });
 
 module.exports = {
+  getCompanySchema,
   createCompanySchema,
   loginCompanySchema,
   emailOnlySchema,

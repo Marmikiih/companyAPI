@@ -11,6 +11,7 @@ const {
   acceptInvitationTeamMember
 } = require("../controllers/company.controller");
 const {
+  getCompanySchema,
   createCompanySchema,
   loginCompanySchema,
   emailOnlySchema,
@@ -20,7 +21,7 @@ const {
 } = require("../validation/company.validation");
 const AuthenticateUser = require("../middleware/auth");
 
-router.get("/company", AuthenticateUser, getCompanies);
+router.get("/company/:id?", AuthenticateUser, validate(getCompanySchema, "params"), getCompanies);
 router.post("/company", validate(createCompanySchema), registerCompany);
 router.post("/login-company", validate(loginCompanySchema), companyLogin);
 
